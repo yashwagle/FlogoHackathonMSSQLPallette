@@ -4,7 +4,6 @@
   "type": "flogo:activity",
     "ref": "github.com/yashwagle/HelloWorld",
   "description": "activity description",
-   "homepage": "https://github.com/yashwagle/HelloWorld",
   "author": "Yash Wagle",
   "inputs":[
     {
