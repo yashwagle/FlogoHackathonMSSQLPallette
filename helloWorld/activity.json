@@ -1,0 +1,25 @@
+{
+  "name": "helloWorld",
+  "version": "0.0.1",
+  "type": "flogo:activity",
+    "ref": "github.com/yashwagle/helloWorld",
+    "title": "concat activity",
+  "description": "activity description",
+  "author": "Yash Wagle",
+  "inputs":[
+    {
+      "name": "input1",
+      "type": "string"
+    },
+    {
+      "name": "input2",
+      "type": "string"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "type": "string"
+    }
+  ]
+}
