@@ -5,6 +5,7 @@
     "ref": "github.com/yashwagle/HelloWorld",
     "title": "concat activity",
   "description": "activity description",
+  "homepage": "https://github.com/yashwagle/HelloWorld/tree/master/helloWorld",
   "author": "Yash Wagle",
   "inputs":[
     {
