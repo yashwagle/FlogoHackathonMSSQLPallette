@@ -2,7 +2,7 @@
   "name": "helloWorld",
   "version": "0.0.1",
   "type": "flogo:activity",
-    "ref": "github.com/yashwagle/HelloWorld",
+    "ref": "github.com/yashwagle/helloWorld",
     "title": "concat activity",
   "description": "activity description",
   "homepage": "https://github.com/yashwagle/HelloWorld/tree/master/helloWorld",
