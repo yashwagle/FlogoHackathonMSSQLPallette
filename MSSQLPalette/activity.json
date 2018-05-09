@@ -1,0 +1,52 @@
+{
+  "name": "MSSQLPalette",
+  "version": "0.0.1",
+  "type": "flogo:activity",
+  "title": "MSSQL activity",
+  "description": "MS SQL Connector",
+  "author": "Team Dummies",
+  "inputs":[
+    {
+      "name": "host",
+      "type": "string"
+    },
+    {
+      "name": "method",
+      "type": "string",
+      "allowed": [
+        "Select",
+        "Insert/Update/Delete",
+        "Create"
+      ],
+      "value": "Select",
+      "required": true
+    },
+
+    {
+      "name": "port",
+      "type": "string"
+    },
+    {
+      "name": "dbname",
+      "type": "string"
+    },
+    {
+      "name": "username",
+      "type": "string"
+    },
+    {
+      "name": "password",
+      "type": "string"
+    },
+    {
+      "name": "query",
+      "type": "string"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "output",
+      "type": "string"
+    }
+  ]
+}
