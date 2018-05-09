@@ -4,6 +4,7 @@
   "type": "flogo:activity",
   "title": "MSSQL activity",
   "description": "MS SQL Connector",
+  "ref":"github.com/yashwagle/HelloWorld/MSSQLPalette"
   "author": "Team Dummies",
   "inputs":[
     {
