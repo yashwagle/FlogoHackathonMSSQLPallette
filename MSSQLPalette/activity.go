@@ -54,6 +54,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 			fmt.Println("error 1")
 			return false, err
 		}
+
 		context.SetOutput("output", op)
 		return true, nil
 	case methodDML:
