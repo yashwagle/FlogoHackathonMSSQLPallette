@@ -67,6 +67,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 		context.SetOutput("output", op)
 		return true, nil
+
 	case methodDML: //DML queries
 		if strings.TrimPrefix(query, " ") != "Update" && strings.TrimPrefix(query, " ") != "Delete" && strings.TrimPrefix(query, " ") != "Insert" {
 			err := errors.New("Not DQL Query")

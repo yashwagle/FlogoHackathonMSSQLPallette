@@ -46,7 +46,7 @@ func TestEval(t *testing.T) {
 	act := NewActivity(getActivityMetadata())
 	tc := test.NewTestActivityContext(getActivityMetadata())
 
-	ip := `insert into master.dbo.customer (name,phonenumber,dob,address) values ('Yash','123','1995-03-23','PQR');`
+	ip := `Insert into master.dbo.customer (name,phonenumber,dob,address) values ('Yash','123','1995-03-23','PQR');`
 	//setup attrs
 	method := "DML"
 	tc.SetInput("method", method)
@@ -59,8 +59,8 @@ func TestEval(t *testing.T) {
 
 	act.Eval(tc)
 	result := tc.GetOutput("output")
-
-	assert.Equal(t, result, result)
+	expectedop := `{"numberOfRowsAffected":"1"}`
+	assert.Equal(t, result, expectedop)
 
 	//check result attr
 }
