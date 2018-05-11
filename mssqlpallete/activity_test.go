@@ -1,4 +1,4 @@
-package MSSQLPalette
+package mssqlpalette
 
 import (
 	"io/ioutil"
