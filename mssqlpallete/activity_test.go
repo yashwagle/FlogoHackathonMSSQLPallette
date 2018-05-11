@@ -46,9 +46,9 @@ func TestEval(t *testing.T) {
 	act := NewActivity(getActivityMetadata())
 	tc := test.NewTestActivityContext(getActivityMetadata())
 
-	ip := "Select * from master.dbo.customer;"
+	ip := `insert into master.dbo.customer (name,phonenumber,dob,address) values ('Yash','123','1995-03-23','PQR');`
 	//setup attrs
-	method := "Select"
+	method := "DML"
 	tc.SetInput("method", method)
 	tc.SetInput("query", ip)
 	tc.SetInput("host", `localhost`)
