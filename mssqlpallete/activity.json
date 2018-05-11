@@ -1,10 +1,10 @@
 {
-  "name": "MSSQLPalette",
+  "name": "mssqlpalette",
   "version": "0.0.1",
   "type": "flogo:activity",
   "title": "MSSQL activity",
   "description": "MS SQL Connector",
-  "ref":"github.com/yashwagle/HelloWorld/MSSQLPalette",
+  "ref":"github.com/yashwagle/HelloWorld/mssqlpalette",
   "author": "Team Dummies",
   "inputs":[
     {
