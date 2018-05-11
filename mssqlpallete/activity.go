@@ -52,7 +52,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	case methodSelect:
 		op, err := MSQLPackage.FireQuery(username, password, host, port, dbname, query)
 		if err != nil {
-			activityLog.Debugf(err.Error())
+			activityLog.Errorf(err.Error())
 			return false, err
 		}
 
@@ -61,7 +61,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	case methodDML:
 		op, err := MSQLPackage.UpdateQuery(username, password, host, port, dbname, query)
 		if err != nil {
-			activityLog.Debugf(err.Error())
+			activityLog.Errorf(err.Error())
 			return false, err
 		}
 		context.SetOutput("output", op)
