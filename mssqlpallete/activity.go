@@ -1,6 +1,9 @@
 package mssqlpallete
 
 import (
+	"errors"
+	"strings"
+
 	"github.com/yashwagle/goLibrary/MSQLPackage"
 
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
@@ -10,9 +13,9 @@ import (
 var activityLog = logger.GetLogger("activity-tibco-mssql")
 
 const (
-	methodSelect = "Select"
+	methodSelect = "DQL"
 	methodDML    = "DML"
-	methodCreate = "Create"
+	methodCreate = "DDL"
 
 	ipMethod   = "method"
 	ipHost     = "host"
@@ -47,9 +50,15 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	password, _ := context.GetInput(ippassword).(string)
 	dbname, _ := context.GetInput(ipDBname).(string)
 	query, _ := context.GetInput(ipquery).(string)
+	query = strings.TrimSpace(query)
 
 	switch method {
-	case methodSelect:
+	case methodSelect: //Select Queries
+		if strings.TrimPrefix(query, " ") != "Select" {
+			err := errors.New("Not Select Query")
+			activityLog.Errorf(err.Error())
+			return false, err
+		}
 		op, err := MSQLPackage.FireQuery(username, password, host, port, dbname, query)
 		if err != nil {
 			activityLog.Errorf(err.Error())
@@ -58,7 +67,12 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 		context.SetOutput("output", op)
 		return true, nil
-	case methodDML:
+	case methodDML: //DML queries
+		if strings.TrimPrefix(query, " ") != "Update" && strings.TrimPrefix(query, " ") != "Delete" && strings.TrimPrefix(query, " ") != "Insert" {
+			err := errors.New("Not DQL Query")
+			activityLog.Errorf(err.Error())
+			return false, err
+		}
 		op, err := MSQLPackage.UpdateQuery(username, password, host, port, dbname, query)
 		if err != nil {
 			activityLog.Errorf(err.Error())
@@ -66,8 +80,17 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		}
 		context.SetOutput("output", op)
 		return true, nil
+
+	case methodCreate: //Create Query
+		op, err := MSQLPackage.CreateQuery(username, password, host, port, dbname, query)
+		if err != nil {
+			activityLog.Errorf(err.Error())
+			return false, err
+		}
+		context.SetOutput("output", op)
+		return true, nil
+
 	}
-	// do eval
 
 	return true, nil
 }

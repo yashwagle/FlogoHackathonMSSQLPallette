@@ -16,9 +16,9 @@
       "name": "method",
       "type": "string",
       "allowed": [
-        "Select",
+        "DQL",
         "DML",
-        "Create"
+        "DDL"
       ],
       "value": "Select",
       "required": true

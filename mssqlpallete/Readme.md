@@ -95,6 +95,8 @@ go-mssqldb is a driver written in GOLANG to connect to MS-SQL database. The purp
 
 ### Example :
 This activity will give the response in a following way,
+
+
 DML Operation
 
 ```
