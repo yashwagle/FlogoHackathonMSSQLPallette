@@ -54,8 +54,9 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	switch method {
 	case methodSelect: //Select Queries
-		if strings.TrimPrefix(query, " ") != "Select" {
-			err := errors.New("Not Select Query" + strings.TrimPrefix(query, " "))
+		operation := strings.Split(query, " ")[0]
+		if strings.ToLower(operation) != "select" {
+			err := errors.New("Not Select Query" + operation)
 			activityLog.Errorf(err.Error())
 			return false, err
 		}
@@ -69,9 +70,9 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		return true, nil
 
 	case methodDML: //DML queries
-		operation := strings.TrimPrefix(query, " ")
+		operation := strings.Split(query, " ")[0]
 		if strings.ToLower(operation) != "update" && strings.ToLower(operation) != "delete" && strings.ToLower(operation) != "insert" {
-			err := errors.New("Not DQL Query " + strings.TrimPrefix(query, " "))
+			err := errors.New("Not DQL Query " + operation)
 			activityLog.Errorf(err.Error())
 			return false, err
 		}
