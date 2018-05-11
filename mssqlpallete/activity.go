@@ -1,4 +1,4 @@
-package mssqlpalette
+package mssqlpallete
 
 import (
 	"github.com/yashwagle/goLibrary/MSQLPackage"
