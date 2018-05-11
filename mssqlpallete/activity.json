@@ -20,7 +20,7 @@
         "DML",
         "DDL"
       ],
-      "value": "Select",
+      "value": "DQL",
       "required": true
     },
 
