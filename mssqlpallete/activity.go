@@ -11,7 +11,7 @@ var activityLog = logger.GetLogger("activity-tibco-mssql")
 
 const (
 	methodSelect = "Select"
-	methodDML    = "Insert/Update/Delete"
+	methodDML    = "DML"
 	methodCreate = "Create"
 
 	ipMethod   = "method"
