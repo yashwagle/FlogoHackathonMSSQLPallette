@@ -10,7 +10,7 @@
     {
       "name": "host",
       "type": "string",
-        "required": true
+      "required": true
     },
     {
       "name": "method",
@@ -27,27 +27,27 @@
     {
       "name": "port",
       "type": "string",
-        "required": true
+      "required": true
     },
     {
       "name": "dbname",
       "type": "string",
-        "required": true
+      "required": true
     },
     {
       "name": "username",
       "type": "string",
-        "required": true
+      "required": true
     },
     {
       "name": "password",
       "type": "string",
-        "required": true
+      "required": true
     },
     {
       "name": "query",
       "type": "string",
-        "required": true
+      "required": true
     }
   ],
   "outputs": [
