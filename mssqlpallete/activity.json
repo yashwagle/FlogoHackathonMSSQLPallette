@@ -9,14 +9,15 @@
   "inputs":[
     {
       "name": "host",
-      "type": "string"
+      "type": "string",
+        "required": true
     },
     {
       "name": "method",
       "type": "string",
       "allowed": [
         "Select",
-        "Insert/Update/Delete",
+        "DML",
         "Create"
       ],
       "value": "Select",
@@ -25,23 +26,28 @@
 
     {
       "name": "port",
-      "type": "string"
+      "type": "string",
+        "required": true
     },
     {
       "name": "dbname",
-      "type": "string"
+      "type": "string",
+        "required": true
     },
     {
       "name": "username",
-      "type": "string"
+      "type": "string",
+        "required": true
     },
     {
       "name": "password",
-      "type": "string"
+      "type": "string",
+        "required": true
     },
     {
       "name": "query",
-      "type": "string"
+      "type": "string",
+        "required": true
     }
   ],
   "outputs": [

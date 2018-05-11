@@ -1,12 +1,13 @@
-package MSSQLPalette
+package mssqlpalette
 
 import (
-	"fmt"
-
 	"github.com/yashwagle/goLibrary/MSQLPackage"
 
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
+	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
+
+var activityLog = logger.GetLogger("activity-tibco-mssql")
 
 const (
 	methodSelect = "Select"
@@ -51,7 +52,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	case methodSelect:
 		op, err := MSQLPackage.FireQuery(username, password, host, port, dbname, query)
 		if err != nil {
-			fmt.Println("error 1")
+			activityLog.Debugf(err.Error())
 			return false, err
 		}
 
@@ -60,7 +61,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	case methodDML:
 		op, err := MSQLPackage.UpdateQuery(username, password, host, port, dbname, query)
 		if err != nil {
-			fmt.Println(err.Error())
+			activityLog.Debugf(err.Error())
 			return false, err
 		}
 		context.SetOutput("output", op)
