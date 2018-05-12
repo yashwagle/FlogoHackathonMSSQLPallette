@@ -1,6 +1,7 @@
 package mssqlpallete
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"testing"
 
@@ -60,7 +61,8 @@ func TestEval(t *testing.T) {
 	act.Eval(tc)
 	result := tc.GetOutput("output")
 	expectedop := `{"numberOfRowsAffected":"1"}`
-	assert.Equal(t, result, expectedop)
+	resultString, _ := json.Marshal(result)
+	assert.Equal(t, expectedop, string(resultString))
 
 	//check result attr
 }

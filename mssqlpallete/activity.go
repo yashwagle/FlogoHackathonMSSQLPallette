@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/yashwagle/goLibrary/MSQLPackage"
+	"github.com/yashwagle/goLibrary/mssqlpackage"
 
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
@@ -60,7 +60,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 			activityLog.Errorf(err.Error())
 			return false, err
 		}
-		op, err := MSQLPackage.FireQuery(username, password, host, port, dbname, query)
+		op, err := mssqlpackage.FireQuery(username, password, host, port, dbname, query)
 		if err != nil {
 			activityLog.Errorf(err.Error())
 			return false, err
@@ -72,11 +72,11 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	case methodDML: //DML queries
 		operation := strings.Split(query, " ")[0]
 		if strings.ToLower(operation) != "update" && strings.ToLower(operation) != "delete" && strings.ToLower(operation) != "insert" {
-			err := errors.New("Not DQL Query " + operation)
+			err := errors.New("Not DML Query " + operation)
 			activityLog.Errorf(err.Error())
 			return false, err
 		}
-		op, err := MSQLPackage.UpdateQuery(username, password, host, port, dbname, query)
+		op, err := mssqlpackage.UpdateQuery(username, password, host, port, dbname, query)
 		if err != nil {
 			activityLog.Errorf(err.Error())
 			return false, err
@@ -85,7 +85,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		return true, nil
 
 	case methodCreate: //Create Query
-		op, err := MSQLPackage.CreateQuery(username, password, host, port, dbname, query)
+		op, err := mssqlpackage.CreateQuery(username, password, host, port, dbname, query)
 		if err != nil {
 			activityLog.Errorf(err.Error())
 			return false, err
