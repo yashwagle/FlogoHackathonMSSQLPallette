@@ -120,21 +120,21 @@ func TestEval(t *testing.T) {
 	assert.Equal(t, expectedop, string(resultString))
 
 	//Delete Test Case
-	ip = `Create table test (name varchar(100),phonenumber varchar(100))`
-	method = "DDL"
-	tc.SetInput("method", method)
-	tc.SetInput("query", ip)
-	tc.SetInput("host", `localhost`)
-	tc.SetInput("port", "1433")
-	tc.SetInput("username", "sa")
-	tc.SetInput("password", "Tibco2018")
-	tc.SetInput("dbname", "master")
+	/*	ip = `Create table test (name varchar(100),phonenumber varchar(100))`
+		method = "DDL"
+		tc.SetInput("method", method)
+		tc.SetInput("query", ip)
+		tc.SetInput("host", `localhost`)
+		tc.SetInput("port", "1433")
+		tc.SetInput("username", "sa")
+		tc.SetInput("password", "Tibco2018")
+		tc.SetInput("dbname", "master")
 
-	act.Eval(tc)
-	result = tc.GetOutput("output")
-	expectedop = `{"Query Status":"Operation Successful"}`
+		act.Eval(tc)
+		result = tc.GetOutput("output")
+		expectedop = `{"Query Status":"Operation Successful"}`
 
-	resultString, _ = json.Marshal(result)
-	assert.Equal(t, expectedop, string(resultString))
-
+		resultString, _ = json.Marshal(result)
+		assert.Equal(t, expectedop, string(resultString))
+	*/
 }
