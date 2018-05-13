@@ -18,57 +18,56 @@ go-mssqldb is a driver written in GOLANG to connect to MS-SQL database. The purp
 ### Schema
 
 ```
-{
-  "inputs":[
-    {
-      "name": "host",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "method",
-      "type": "string",
-      "allowed": [
-        "Select",
-        "DML",
-        "Create"
-      ],
-      "value": "Select",
-      "required": true
-    },
+"inputs":[
+  {
+    "name": "host",
+    "type": "string",
+    "required": true
+  },
+  {
+    "name": "method",
+    "type": "string",
+    "allowed": [
+      "DQL",
+      "DML",
+      "DDL"
+    ],
+    "value": "DQL",
+    "required": true
+  },
 
-    {
-      "name": "port",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "dbname",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "username",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "password",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "query",
-      "type": "string",
-      "required": true
-    }
-  ],
-  "outputs": [
-    {
-      "name": "output",
-      "type": "object"
-    }
-  ]
+  {
+    "name": "port",
+    "type": "string",
+    "required": true
+  },
+  {
+    "name": "dbname",
+    "type": "string",
+    "required": true
+  },
+  {
+    "name": "username",
+    "type": "string",
+    "required": true
+  },
+  {
+    "name": "password",
+    "type": "string",
+    "required": true
+  },
+  {
+    "name": "query",
+    "type": "string",
+    "required": true
+  }
+],
+"outputs": [
+  {
+    "name": "output",
+    "type": "object"
+  }
+]
 }
 ```
 
@@ -132,4 +131,10 @@ DQL Operation
 		}]
 	}]
 }
+```
+
+DDL Operation
+
+```
+{"Query Status":"Operation Successful"}
 ```

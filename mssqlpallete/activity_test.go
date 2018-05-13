@@ -119,7 +119,7 @@ func TestEval(t *testing.T) {
 	resultString, _ = json.Marshal(result)
 	assert.Equal(t, expectedop, string(resultString))
 
-	//Delete Test Case
+	//Create Test Case
 	/*	ip = `Create table test (name varchar(100),phonenumber varchar(100))`
 		method = "DDL"
 		tc.SetInput("method", method)
