@@ -85,7 +85,13 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		return true, nil
 
 	case methodCreate: //Create Query
+		operation := strings.Split(query, " ")[0]
 		op, err := mssqlpackage.CreateQuery(username, password, host, port, dbname, query)
+		if strings.ToLower(operation) != "create" && strings.ToLower(operation) != "drop" && strings.ToLower(operation) != "alter" && strings.ToLower(operation) != "truncate" && strings.ToLower(operation) != "comment" {
+			err := errors.New("Not DML Query " + operation)
+			activityLog.Errorf(err.Error())
+			return false, err
+		}
 		if err != nil {
 			activityLog.Errorf(err.Error())
 			return false, err
