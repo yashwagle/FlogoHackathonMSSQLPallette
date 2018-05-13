@@ -1,5 +1,5 @@
 {
-  "name": "MS SQL Connector",
+  "name": "mssqlpallete",
   "version": "0.0.1",
   "type": "flogo:activity",
   "title": "MSSQL Pallete",
