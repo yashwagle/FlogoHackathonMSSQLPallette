@@ -1,9 +1,9 @@
 {
-  "name": "mssqlpallete",
+  "name": "MS SQL Connector",
   "version": "0.0.1",
   "type": "flogo:activity",
   "title": "MSSQL Pallete",
-  "description": "MS SQL Connector",
+  "description": "MS SQL Connector to perform CRUD operations",
   "ref":"github.com/yashwagle/HelloWorld/mssqlpallete",
   "author": "Team Dummies",
   "inputs":[
