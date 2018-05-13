@@ -45,9 +45,15 @@
       "required": true
     },
     {
+      "name": "timeout",
+      "type": "int",
+      "required": true
+    },
+    {
       "name": "query",
       "type": "string",
-      "required": true
+      "value":0,
+      "required": false
     }
   ],
   "outputs": [

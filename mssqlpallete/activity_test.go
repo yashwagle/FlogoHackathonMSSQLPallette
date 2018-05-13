@@ -57,6 +57,7 @@ func TestEval(t *testing.T) {
 	tc.SetInput("username", "sa")
 	tc.SetInput("password", "Tibco2018")
 	tc.SetInput("dbname", "master")
+	tc.SetInput("timeout", "10")
 
 	act.Eval(tc)
 	result := tc.GetOutput("output")
@@ -96,7 +97,7 @@ func TestEval(t *testing.T) {
 
 	act.Eval(tc)
 	result = tc.GetOutput("output")
-	expectedop = `{"rows":[{"row":[{"column":{"name":"name","value":"Yash"}},{"column":{"name":"marks","value":"100"}}]},{"row":[{"column":{"name":"name","value":"Sushil"}},{"column":{"name":"marks","value":"200"}}]}]}`
+	expectedop = `{"rows":[{"row":[{"column":{"name":"name","value":"Pankaj"}},{"column":{"name":"marks","value":"123"}}]},{"row":[{"column":{"name":"name","value":"Pankaj"}},{"column":{"name":"marks","value":"123"}}]}]}`
 
 	resultString, _ = json.Marshal(result)
 	assert.Equal(t, expectedop, string(resultString))

@@ -57,9 +57,15 @@ go-mssqldb is a driver written in GOLANG to connect to MS-SQL database. The purp
     "required": true
   },
   {
+    "name": "timeout",
+    "type": "int",
+    "required": true
+  },
+  {
     "name": "query",
     "type": "string",
-    "required": true
+    "value":0,
+    "required": false
   }
 ],
 "outputs": [
@@ -82,6 +88,7 @@ go-mssqldb is a driver written in GOLANG to connect to MS-SQL database. The purp
 | dbname  | True | String | Name of the database |
 | username  | True | String | Database username |
 | password  | True | String | Database password |
+| timeout  | False | Integer | Timeout for the string |
 | Query  | True | String | Query to be Executed |
 
 

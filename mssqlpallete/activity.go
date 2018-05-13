@@ -24,6 +24,7 @@ const (
 	ipusername = "username"
 	ippassword = "password"
 	ipquery    = "query"
+	iptimeout  = "timeout"
 )
 
 // MyActivity is a stub for your Activity implementation
@@ -50,7 +51,12 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	password, _ := context.GetInput(ippassword).(string)
 	dbname, _ := context.GetInput(ipDBname).(string)
 	query, _ := context.GetInput(ipquery).(string)
+	timeout, _ := context.GetInput(iptimeout).(int)
 	query = strings.TrimSpace(query)
+
+	if timeout == 0 {
+		timeout = 15
+	}
 
 	switch method {
 	case methodSelect: //Select Queries
@@ -60,7 +66,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 			activityLog.Errorf(err.Error())
 			return false, err
 		}
-		op, err := mssqlpackage.FireQuery(username, password, host, port, dbname, query)
+		op, err := mssqlpackage.FireQuery(username, password, host, port, dbname, query, timeout)
 		if err != nil {
 			activityLog.Errorf(err.Error())
 			return false, err
@@ -76,7 +82,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 			activityLog.Errorf(err.Error())
 			return false, err
 		}
-		op, err := mssqlpackage.UpdateQuery(username, password, host, port, dbname, query)
+		op, err := mssqlpackage.UpdateQuery(username, password, host, port, dbname, query, timeout)
 		if err != nil {
 			activityLog.Errorf(err.Error())
 			return false, err
@@ -86,7 +92,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 	case methodCreate: //Create Query
 		operation := strings.Split(query, " ")[0]
-		op, err := mssqlpackage.CreateQuery(username, password, host, port, dbname, query)
+		op, err := mssqlpackage.CreateQuery(username, password, host, port, dbname, query, timeout)
 		if strings.ToLower(operation) != "create" && strings.ToLower(operation) != "drop" && strings.ToLower(operation) != "alter" && strings.ToLower(operation) != "truncate" && strings.ToLower(operation) != "comment" {
 			err := errors.New("Not DML Query " + operation)
 			activityLog.Errorf(err.Error())
