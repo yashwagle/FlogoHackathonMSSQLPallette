@@ -47,13 +47,13 @@
     {
       "name": "timeout",
       "type": "int",
-      "required": true
+          "value":0,
+      "required": false
     },
     {
       "name": "query",
       "type": "string",
-      "value":0,
-      "required": false
+      "required": true
     }
   ],
   "outputs": [

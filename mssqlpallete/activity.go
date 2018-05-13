@@ -53,7 +53,11 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 	query, _ := context.GetInput(ipquery).(string)
 	timeout, _ := context.GetInput(iptimeout).(int)
 	query = strings.TrimSpace(query)
-
+	if timeout < 0 {
+		err := errors.New("negative timeout not allowed")
+		activityLog.Errorf(err.Error())
+		return false, err
+	}
 	if timeout == 0 {
 		timeout = 15
 	}
